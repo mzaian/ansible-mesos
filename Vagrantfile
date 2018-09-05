@@ -6,7 +6,10 @@ ANSIBLE_GROUPS = {
 
 
 Vagrant.configure(2) do |config|
-    config.vm.box = "bento/centos-7.1"
+    config.vm.box = "bento/centos-7.5"
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "4096", "--cpus", "2"]
+    end 
     config.vm.define "node1" do |node1|
         node1.vm.network "private_network", ip: "192.168.33.10"
         node1.vm.hostname = "node1"
