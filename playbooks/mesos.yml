@@ -27,6 +27,8 @@
         shell: zookeeper-server-initialize --myid=1
       - name: install mesos, marathon, chronos, and docker packages
         yum: pkg=sudo,device-mapper-event-libs,mesos,marathon,chronos,docker-ce state=latest
+      - name: upgrade all packages
+        yum: name=* state=latest
       - name: configure containerizers
         lineinfile: dest=/etc/mesos-slave/containerizers create=yes line="docker,mesos"
       - name: start zookeeper
