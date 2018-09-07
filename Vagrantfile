@@ -7,10 +7,10 @@ ANSIBLE_GROUPS = {
 
 Vagrant.configure(2) do |config|
     config.vm.box = "bento/centos-7.5"
+    config.vm.define "node1" do |node1|
     config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", "4096", "--cpus", "2"]
     end 
-    config.vm.define "node1" do |node1|
         node1.vm.network "private_network", ip: "192.168.33.10"
         node1.vm.hostname = "node1"
         node1.vm.provision "ansible" do |ansible|
@@ -20,6 +20,9 @@ Vagrant.configure(2) do |config|
     end
 
     config.vm.define "node2" do |node2|
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
+    end 
         node2.vm.network "private_network", ip: "192.168.33.11"
         node2.vm.hostname = "node2"
         node2.vm.provision "ansible" do |ansible|
@@ -30,6 +33,9 @@ Vagrant.configure(2) do |config|
 
 
     config.vm.define "node3" do |node3|
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
+    end 
         node3.vm.network "private_network", ip: "192.168.33.12"
         node3.vm.hostname = "node3"
         node3.vm.provision "ansible" do |ansible|
@@ -39,6 +45,9 @@ Vagrant.configure(2) do |config|
     end
 
     config.vm.define "node4" do |node4|
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
+    end 
         node4.vm.network "private_network", ip: "192.168.33.13"
         node4.vm.hostname = "node4"
         node4.vm.provision "ansible" do |ansible|

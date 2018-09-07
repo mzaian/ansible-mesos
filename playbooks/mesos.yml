@@ -77,3 +77,5 @@
         service: name=docker state=started enabled=yes
       - name: install outyet
         shell: docker load --input=/vagrant/outyet.tar.gz
+      - name: configure marathon user
+        shell: useradd -s /bin/false marathon
