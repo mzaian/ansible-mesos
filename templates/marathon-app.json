@@ -4,7 +4,7 @@
   "cpus": 0.2,
   "mem": 32,
   "disk": 0,
-  "instances": 16,
+  "instances": 8,
   "container": {
     "type": "DOCKER",
     "docker": {
